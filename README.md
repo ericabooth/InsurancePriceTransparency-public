@@ -13,6 +13,18 @@ This pipeline solves the "Big Data" problem by:
 2. **Streaming Extraction:** Parsing JSON data in real-time from the cloud without high memory overhead or local storage of the full 100GB files.
 3. **Targeted Filtering:** Pulling data only for a specific "Menu" of CPT/HCPCS codes.
 
+## 💡 Value & Research Impact
+
+This project provides the "missing link" in healthcare price transparency. While previous work, such as the [Texas 2036 Hospital Pricing Tool](https://texas2036.shinyapps.io/hospital-pricing/), has successfully mapped hospital-side charge data, this pipeline enables a **360-degree view** of the healthcare market by extracting the insurer-side negotiated rates.
+
+### Key Research Insights:
+*   **Insurer vs. Hospital Alignment:** Comparing the rates hospitals claim to negotiate with the rates insurers actually report.
+*   **Geographic Price Variation:** Identifying regional "price cliffs" across Texas for identical procedures.
+*   **Market Power Analysis:** Evaluating how different insurance products (HMO vs. PPO) and health systems leverage their scale to influence pricing.
+*   **Policy Evaluation:** Providing a baseline of real-world negotiated rates to inform legislative efforts regarding healthcare affordability and network adequacy.
+
+By utilizing a "Sieve-Based" strategy, this repository makes it possible for researchers to conduct high-fidelity analysis of "Big Data" sources that were previously inaccessible due to technical and infrastructure constraints.
+
 ## 📁 Repository Structure
 
 The repository has been expanded with modular scripts for a full end-to-end workflow:
@@ -65,6 +77,12 @@ While current development focuses on **BCBS TX**, the pipeline is architected fo
 
 ## 📊 Data Integrity
 The extracted data includes audit-trail elements (`source_file_url`, `source_file_hash`) to ensure research reproducibility. All rates are stored in USD with modifiers preserved to prevent "apples-to-oranges" comparisons.
+
+## ✍️ Author
+**Eric A. Booth**  
+Senior Policy Researcher / Data Lead  
+**Texas 2036**  
+[eric.a.booth@gmail.com](mailto:eric.a.booth@gmail.com) | [www.texas2036.org](https://www.texas2036.org)
 
 ## ⚖️ License
 Licensed under the MIT License. See `LICENSE` for details.
