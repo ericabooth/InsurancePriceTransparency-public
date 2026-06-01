@@ -80,7 +80,7 @@ The extracted data includes audit-trail elements (`source_file_url`, `source_fil
 
 ## ✍️ Author
 **Eric A. Booth**  
-Senior Policy Researcher / Data Lead  
+Senior Researcher
 **Texas 2036**  
 [eric.a.booth@gmail.com](mailto:eric.a.booth@gmail.com) | [www.texas2036.org](https://www.texas2036.org)
 
