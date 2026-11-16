@@ -8,6 +8,8 @@ import requests
 import csv
 import gzip
 import io
+import sys
+from pathlib import Path
 
 # CONFIGURATION
 # 1. TEST URL (ACA Provider File)
@@ -18,8 +20,20 @@ TARGET_URL = "https://www.bcbstx.com/aca-json/tx/medical_provider_FACILITY_TX1_B
 SCHEMA_PATH = 'item' 
 
 TARGET_CPT = ['99213', '99214', '70551', '45378'] # Procedural Menu
-# Using absolute path to ensure the file is saved in the project folder
-OUTPUT_FILE = "/Users/ericbooth/Library/CloudStorage/GoogleDrive-eric.booth@texas2036.org/Shared drives/Data and Research Team/4_Active Projects/Healthcare_Childcare/PriceTransparency/extracted_rates.csv"
+
+
+def _team_drive():
+    """Data and Research Team shared drive: G: on Windows, Google Drive for desktop on macOS."""
+    if sys.platform.startswith("win"):
+        return Path("G:/Shared drives/Data and Research Team")
+    hits = sorted((Path.home() / "Library" / "CloudStorage").glob(
+        "GoogleDrive-*/Shared drives/Data and Research Team"))
+    if not hits:
+        sys.exit("Shared drive 'Data and Research Team' not found under Library/CloudStorage in the home folder.")
+    return hits[0]
+
+# Absolute path so the file is saved in the project folder on the shared drive
+OUTPUT_FILE = str(_team_drive() / "4_Active Projects/Healthcare_Childcare/PriceTransparency/extracted_rates.csv")
 
 class GzipStreamWrapper:
     """Detects GZIP header and decompresses on the fly if needed."""

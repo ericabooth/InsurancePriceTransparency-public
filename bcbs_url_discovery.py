@@ -7,12 +7,24 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import time
+import sys
+from pathlib import Path
 
 # List of EINs to query (9 digits, no dash)
 # You can replace this with a load from your DOL 5500 Master List later
 EIN_LIST = ['272508985', '741109635', '750800701'] 
 
-OUTPUT_CSV = "/Users/ericbooth/Library/CloudStorage/GoogleDrive-eric.booth@texas2036.org/Shared drives/Data and Research Team/4_Active Projects/Healthcare_Childcare/PriceTransparency/discovered_mrf_urls.csv"
+def _team_drive():
+    """Data and Research Team shared drive: G: on Windows, Google Drive for desktop on macOS."""
+    if sys.platform.startswith("win"):
+        return Path("G:/Shared drives/Data and Research Team")
+    hits = sorted((Path.home() / "Library" / "CloudStorage").glob(
+        "GoogleDrive-*/Shared drives/Data and Research Team"))
+    if not hits:
+        sys.exit("Shared drive 'Data and Research Team' not found under Library/CloudStorage in the home folder.")
+    return hits[0]
+
+OUTPUT_CSV = str(_team_drive() / "4_Active Projects/Healthcare_Childcare/PriceTransparency/discovered_mrf_urls.csv")
 
 def discover_urls(eins):
     results = []

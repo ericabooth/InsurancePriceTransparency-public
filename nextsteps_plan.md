@@ -113,9 +113,7 @@ Live and valid URLs for BCBS TX that   can use to test the extraction script imm
    3. Run the Scout:
 
    1     python3
-     "/Users/ericbooth/Library/CloudStorage/GoogleDrive-eric.booth@texas2036.org/Shared
-     drives/Data and Research Team/4_Active
-     Projects/Healthcare_Childcare/PriceTransparency/bcbs_url_discovery.py"
+     "<team drive>/4_Active Projects/Healthcare_Childcare/PriceTransparency/bcbs_url_discovery.py"
    4. Feed the Scout into the Extractor: Once you have the discovered_mrf_urls.csv, we can update
       your tic_extractor.py to loop through that CSV and run the "sieve" on every URL
       automatically.
